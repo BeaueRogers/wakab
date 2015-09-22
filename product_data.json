@@ -62,10 +62,8 @@
         }
       ]
     }
-  ]
-}
-{
-  "cat_brands": [
+  ],
+ "cat_brands": [
     {
       "name": "Purrina",
       "breeds": ["Siamese", 
@@ -99,7 +97,7 @@
             },
             {
               "name": "40oz",
-              "price": 47.99
+              "price": 4
             }
           ]
         }
