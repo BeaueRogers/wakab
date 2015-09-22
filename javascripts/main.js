@@ -1,65 +1,62 @@
-require.config({
-	baseURL: "./javascripts",
-	paths: {
-		"jquery":"../lib/bower_components/jquery/dist/jquery.min",
-		"firebase": "../lib/bower_components/firebase/firebase",
-		"lodash": "../lib/bower_components/lodash/lodash.min",
-		"hbs":"../lib/bower_components/require-handlebars-plugin/hbs",
-		"bootstrap":"../lib/bower_components/bootstrap/dist/js/bootstrap.min"
-	},
-	"shim": {
-		"bootstrap": ["jquery"],
-		"firebase": {
-			exports: "Firebase"
-		}
-	}
+
+requirejs.config({
+  baseUrl: './javascripts',
+  paths: {
+    'jquery': '../lib/bower_components/jquery/dist/jquery.min',
+    'firebase': '../lib/bower_components/firebase/firebase',
+    'lodash': '../lib/bower_components/lodash/lodash.min',
+    'hbs': '../lib/bower_components/require-handlebars-plugin/hbs',
+    'bootstrap': '../lib/bower_components/bootstrap/dist/js/bootstrap.min'
+  },
+
+  shim: {
+    'bootstrap': ['jquery'],
+    'firebase': {
+      exports: 'Firebase'
+    }
+  }
 });
 
-requirejs(
-	["jquery", "lodash", "firebase", "hbs", "bootstrap", "getUnique", "getTemplates","populate-food"], function ($, _, _firebase, Handlebars, bootstrap, unique, templates, populate) {
+require(
+  ["jquery", "lodash", "firebase", "bootstrap", "getUnique",
+   "getTemplates"], 
+   function($, _, firebase, bootstrap, unique, templates) {
+    var dogBrandsObject = {};
+  
+    // Create a reference to your Firebase database
+    var myFirebaseRef = new Firebase("https://acme-product-lines.firebaseio.com");
 
-		//dunno if we want to seperate dog and cat food or combine them.  this is unfinished and needs some work...-wd
-			var allDogFoodObject = {};
-			var allDogFoodArray = [];
+    // Listen for when anything changes on the "dog_brands" key
+    myFirebaseRef.child("dog_brands").on("value", function(snapshot) {
 
-			var allCatFoodObject = {};
-			var allCatFoodArray = [];
+    	console.log('snapshot.val()', snapshot.val());
 
-			var wakabFirebaseRef = new Firebase("     ");
+    	// Store the entire dogFood key in a local variable
+    	var dogData = snapshot.val();
+    
 
-			wakabFirebaseRef.child ("dog_food").on("value", function(snapshot) {
+      var dogObject = {dogBrands: dogData};
+      console.log('dogObject', dogObject);
 
-				var dogFood = snapshot.val();
+      $("#dog-brands").html(templates.dogShit(dogObject));     
 
 
-				//more to come here
-			})
-	}
-);
+  });
 
-define(["jquery","lodash","firebase","hbs","bootstrap","getUnique","getTemplates", "populate-food"], function($, _, firebase, Handlebars, bootstrap, unique, templates, populate) {
-	populate.getFood(function(dog_food,cat_food) {
-		console.log("dog_food", dog_food);
-		console.log("cat_food", cat_food);
-		
-		require(["hbs!../templates/dogs"], function(dogsTemplate) {
-		$("#    ").html(dogsTemplate(dog_food));
-		});
-		
-		require(["hbs!../templates/cats"], function(catsTemplate) {
-		$("#    ").html(catsTemplate(cat_food));	
-		});
-		
-	})
+    myFirebaseRef.child("cat_brands").on("value", function(snapshot) {
+
+      console.log('snapshot.val()', snapshot.val());
+
+      // Store the entire dogFood key in a local variable
+      var catData = snapshot.val();
+    
+
+      var catObject = {catBrands: catData};
+      console.log('catObject', catObject);
+
+      $("#cat-brands").html(templates.catShit(catObject));      
+
+
+  });
+
 });
-
-
-
-
-
-
-
-
-
-
-
