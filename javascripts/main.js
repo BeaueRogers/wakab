@@ -17,11 +17,9 @@ requirejs.config({
 });
 
 require(
-  ["jquery", "lodash", "firebase", "bootstrap", "getUnique",
-   "getTemplates"], 
-   function($, _, firebase, bootstrap, unique, templates) {
-    var dogBrandsObject = {};
-  
+  ["jquery", "lodash", "firebase", "bootstrap", "getTemplates"], 
+   function($, _, firebase, bootstrap, templates) {
+    
     // Create a reference to your Firebase database
     var myFirebaseRef = new Firebase("https://acme-product-lines.firebaseio.com");
 
@@ -30,14 +28,15 @@ require(
 
     	console.log('snapshot.val()', snapshot.val());
 
-    	// Store the entire dogFood key in a local variable
+    	// Store the value of the dog_brands key in a local variable
     	var dogData = snapshot.val();
-    
 
       var dogObject = {dogBrands: dogData};
       console.log('dogObject', dogObject);
 
-      $("#dog-brands").html(templates.dogShit(dogObject));     
+      $("#dogNames").html(templates.dogName(dogObject));
+      $("#dogTypes").html(templates.dogType(dogObject));
+      $("#dogVolumes").html(templates.dogVol(dogObject));         
 
 
   });
@@ -53,10 +52,13 @@ require(
       var catObject = {catBrands: catData};
       console.log('catObject', catObject);
 
-      $("#cat-brands").html(templates.catShit(catObject));      
+      $("#catNames").html(templates.catShit(catObject));
+      $("#catBreeds").html(templates.catShit(catObject));
+      $("#catTypes").html(templates.catShit(catObject));
+      $("#catVolumes").html(templates.catShit(catObject));      
 
 
-  });
+  }); 
 
 });
 

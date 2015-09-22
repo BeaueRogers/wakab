@@ -1,21 +1,20 @@
-define(["hbs", "hbs!../templates/dogs", "hbs!../templates/cats"], function(Handlebars, dogTemplate, catTemplate) {
+define(["hbs", "hbs!../templates/dogNames", "hbs!../templates/dogTypes", "hbs!../templates/dogVolumes"], function(Handlebars, dogNameTmpl, dogTypeTmpl, dogVolTmpl) {
 
 	//console.log("templates", Handlebars);
 
   var templates = {};
   // Create empty object to contain my hbs templates
-  templates.dogShit = dogTemplate;
-  templates.catShit = catTemplate;
+  templates.dogName = dogNameTmpl;
+  console.log('dogNameTmpl', dogNameTmpl);
+
+  templates.dogType = dogTypeTmpl;
+  console.log('dogTypeTmpl', dogTypeTmpl);
+
+  templates.dogVol = dogVolTmpl;
+  console.log('dogVolTmpl', dogVolTmpl);
 
 
   return templates;
 });
 
-  /* Assign the key of songs to my object and set it equal to the value of my songs template
-  templates.artists = artistTemplate;
-  // Assign the key of songs to my object and set it equal to the value of my artist template
-  templates.albums = albumTemplate;
-  // Assign the key of songs to my object and set it equal to the value of my album template
-  return templates;
-});
-*/
+ 

@@ -1,4 +1,4 @@
-<!Doctype HTML>
+<!DOCTYPE HTML>
 <html>
   <head>
     <link rel="stylesheet" href="./lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -8,8 +8,35 @@
     <div class="container-fluid">
       <div class="row">
       <section class="dog col-sm-6">
-      <h1>Dog Food Brands</h1>
-      <div id="dog-brands"></div>
+        <h1>Dog Food Brands</h1>
+        <!-- Single button -->
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Name <span class="caret"></span>
+          </button>
+          <ul id="dogNames" class="dropdown-menu">
+          </ul>
+        </div>
+
+        <!-- Single button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Type <span class="caret"></span>
+          </button>
+          <ul id="dogTypes" class="dropdown-menu">
+          </ul>
+        </div>
+
+        <!-- Single button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Volume <span class="caret"></span>
+          </button>
+          <ul id="dogVolumes" class="dropdown-menu">
+          </ul>
+        </div>
+
       </section>
       <section class="cat col-sm-6">
       <h1>Cat Food Brands</h1>
