@@ -17,8 +17,8 @@ requirejs.config({
 });
 
 require(
-  ["jquery", "lodash", "firebase", "bootstrap", "getTemplates"], 
-   function($, _, firebase, bootstrap, templates) {
+  ["jquery", "firebase", "bootstrap", "getTemplates"], 
+   function($, firebase, bootstrap, templates) {
     
     // Create a reference to your Firebase database
     var myFirebaseRef = new Firebase("https://acme-product-lines.firebaseio.com");
@@ -45,17 +45,17 @@ require(
 
       console.log('snapshot.val()', snapshot.val());
 
-      // Store the entire dogFood key in a local variable
+      // Store the value of the cat_brands key in a local variable
       var catData = snapshot.val();
     
 
       var catObject = {catBrands: catData};
       console.log('catObject', catObject);
 
-      $("#catNames").html(templates.catShit(catObject));
-      $("#catBreeds").html(templates.catShit(catObject));
-      $("#catTypes").html(templates.catShit(catObject));
-      $("#catVolumes").html(templates.catShit(catObject));      
+      $("#catNames").html(templates.catName(catObject));
+      $("#catBreeds").html(templates.catBreed(catObject));
+      $("#catTypes").html(templates.catType(catObject));
+      $("#catVolumes").html(templates.catVol(catObject));      
 
 
   }); 
