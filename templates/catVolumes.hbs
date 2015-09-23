@@ -1,0 +1,37 @@
+{{#each catBrands}}
+	{{#each types}}
+		{{#each volumes }}
+			<li>{{ name }}: {{ price }}</li>
+		{{/each}}
+	{{/each}}
+{{/each}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- {{#each catBrands}}
+<!--'#each' has to take the same key as the object I'm passing into my hbs template-->
+<div>
+	<h3>{{ name }}</h3>
+	<h4>{{ breeds }}</h4>
+</div>
+
+	{{#each types}}
+	<div>{{ type }}</div>
+		{{#each volumes}}
+		<div>{{ name }}: {{ price }}</div>
+			{{/each}}
+		{{/each}}
+	{{/each}}
+ --}}
+
+
